@@ -18,12 +18,12 @@ void draw() {
   translate(width/2, height/2 - pixel_size*pixel_count/2);
   icon.display();
   popMatrix();
-  noLoop();
 }
 
 void keyPressed() {
   println("Pressed key: " + int(key) + ", keyCode: " + keyCode);
   if (key == 32) {
-    println("TODO: Refresh the icon structure here");
+    icon.update();
+    println("Spacebar pressed");
   }
 }
