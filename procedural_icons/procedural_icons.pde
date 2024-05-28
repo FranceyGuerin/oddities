@@ -20,3 +20,10 @@ void draw() {
   popMatrix();
   noLoop();
 }
+
+void keyPressed() {
+  println("Pressed key: " + int(key) + ", keyCode: " + keyCode);
+  if (key == 32) {
+    println("TODO: Refresh the icon structure here");
+  }
+}
