@@ -1,11 +1,16 @@
 class Icon {
   int pixel_size, pixel_count;
   boolean [][] pixel_locations;
+  boolean vertical_symmetry;
+  boolean horizontal_symmetry;
 
-  Icon (int ps, int pc) {
+  Icon (int ps, int pc, boolean vs, boolean hs) {
     pixel_size = ps;
     pixel_count = pc;
     pixel_locations = new boolean[pixel_count][pixel_count];
+
+    vertical_symmetry = vs;
+    horizontal_symmetry = hs;
 
     update();
   }
@@ -23,11 +28,22 @@ class Icon {
   }
 
   void display() {
+    if (vertical_symmetry == false && horizontal_symmetry == false) {
+      textSize(50);
+      text("Try Pressing 'V' or 'H'", 0, 0);
+    }
     for (int i = 0; i < pixel_count; i++) {
       for (int j = 0; j < pixel_count; j++) {
         if (pixel_locations[i][j] == true) {
-          rect(i*pixel_size, j*pixel_size, pixel_size, pixel_size);
-          rect(i*-pixel_size, j*pixel_size, pixel_size, pixel_size);
+          if (vertical_symmetry == true) {
+            rect(i*pixel_size, j*pixel_size, pixel_size, pixel_size);
+            rect(i*-pixel_size, j*pixel_size, pixel_size, pixel_size);
+          }
+
+          if (horizontal_symmetry == true) {
+            rect(i*-pixel_size, j*-pixel_size, pixel_size, pixel_size);
+            rect(i*pixel_size, j*-pixel_size, pixel_size, pixel_size);
+          }
         }
       }
     }
