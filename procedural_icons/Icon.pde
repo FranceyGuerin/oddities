@@ -28,21 +28,21 @@ class Icon {
   }
 
   void display() {
-    if (vertical_symmetry == false && horizontal_symmetry == false) {
-      textSize(50);
-      text("Try Pressing 'V' or 'H'", 0, 0);
-    }
     for (int i = 0; i < pixel_count; i++) {
       for (int j = 0; j < pixel_count; j++) {
         if (pixel_locations[i][j] == true) {
           if (vertical_symmetry == true) {
             rect(i*pixel_size, j*pixel_size, pixel_size, pixel_size);
-            rect(i*-pixel_size, j*pixel_size, pixel_size, pixel_size);
+
+            if (horizontal_symmetry == true) {
+              rect(i*-pixel_size, j*pixel_size, pixel_size, pixel_size);
+            }
           }
+
+          rect(i*pixel_size, j*-pixel_size, pixel_size, pixel_size);
 
           if (horizontal_symmetry == true) {
             rect(i*-pixel_size, j*-pixel_size, pixel_size, pixel_size);
-            rect(i*pixel_size, j*-pixel_size, pixel_size, pixel_size);
           }
         }
       }
