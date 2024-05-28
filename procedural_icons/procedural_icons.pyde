@@ -7,13 +7,14 @@ def draw():
     background(125, 30, 99)
     pushMatrix()
     translate(width/2, height/2)
-    icon()
+    icon(20)
     popMatrix()
 
-def icon():
+def icon(size):
     fill(265, 50, 99)
     for i in range(5):
         for j in range(5):
             if random(1) >= 0.5:
-                rect(i*20, j*20, 20, 20)
+                rect(i*size, j*size, size, size)
+                rect(i*-size, j*size, size, size)
     
