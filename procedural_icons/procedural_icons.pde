@@ -3,8 +3,7 @@ int pixel_count = 5;
 Icon icon = new Icon(pixel_size, pixel_count);
 
 void setup() {
-  size(500, 500);
-
+  fullScreen();
   colorMode(HSB, 360, 100, 100);
 
   rectMode(CENTER);
@@ -15,7 +14,7 @@ void setup() {
 void draw() {
   background(125, 30, 99);
   pushMatrix();
-  translate(width/2, height/2 - pixel_size*pixel_count/2);
+  translate(width/2, height/2 - icon.pixel_size*icon.pixel_count/2);
   icon.display();
   popMatrix();
 }
@@ -25,5 +24,17 @@ void keyPressed() {
   if (key == 32) {
     icon.update();
     println("Spacebar pressed");
+  }
+
+  if (key == CODED) {
+    if (keyCode == UP) {
+      println("Up arrow pressed");
+      icon.pixel_size += 10;
+    }
+
+    if (keyCode == DOWN) {
+      println("Down arrow pressed");
+      icon.pixel_size -= 10;
+    }
   }
 }
