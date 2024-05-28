@@ -12,18 +12,8 @@ void draw() {
   background(125, 30, 99);
   pushMatrix();
   translate(width/2, height/2);
-  icon(20, 4);
+  Icon icon_one = new Icon(20, 5);
+  icon_one.display();
   popMatrix();
   noLoop();
-}
-
-void icon(int pixel_size, int pixel_count) {
-  for (int i = 0; i < pixel_count; i++) {
-    for (int j = 0; j < pixel_count; j++) {
-      if (random(1) >= 0.5) {
-        rect(i*pixel_size, j*pixel_size, pixel_size, pixel_size);
-          rect(i*-pixel_size, j*pixel_size, pixel_size, pixel_size);
-      }
-    }
-  }
 }
