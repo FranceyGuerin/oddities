@@ -10,6 +10,7 @@ void setup() {
 
 void draw() {
   background(327, 30, 99);
+  cleanUp();
   forces();
 
   for (int i = 0; i < bodies.size(); i++) {
@@ -40,6 +41,16 @@ void forces() {
         PVector force = new PVector((b2.location.x - b1.location.x) * magnitude, (b2.location.y - b1.location.y) * magnitude);
         b1.force.add(force);
       }
+    }
+  }
+}
+
+void cleanUp() {
+  for (int i = 0; i < bodies.size(); i++) {
+    Body b1 = bodies.get(i);
+    if (b1.location.x > (width * 2) || b1.location.x < 0 - width || b1.location.y > (height * 2) || b1.location.y < 0 - height) {
+      println("Removing body at location:" + b1.location);
+      bodies.remove(b1);
     }
   }
 }
