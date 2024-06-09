@@ -14,11 +14,16 @@ void draw() {
 
   for (int i = 0; i < bodies.size(); i++) {
     Body b = bodies.get(i);
+    b.update();
     b.display();
   }
 }
 
 void mouseClicked() {
   PVector location = new PVector(mouseX, mouseY);
-  bodies.add(new Body(location));
+  PVector velocity = new PVector(random(-1, 1), random(-1, 1));
+  bodies.add(new Body(location, 10.0, velocity));
+}
+
+void forces() {
 }
