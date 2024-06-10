@@ -28,8 +28,14 @@ void mouseClicked() {
 }
 
 void forces() {
+  PVector center = new PVector(width/2, height/2);
+
   for (int i = 0; i < bodies.size(); i++) {
     Body b1 = bodies.get(i);
+
+    // Apply a small force to keep the orbiting bodies roughly on the center of the display
+    PVector center_force = new PVector((center.x - b1.location.x) * .00005, (center.y - b1.location.y) * .00005);
+    b1.force.add(center_force);
 
     for (int j = 0; j < bodies.size(); j++) {
       if (i != j) {
@@ -44,6 +50,7 @@ void forces() {
     }
   }
 }
+
 
 void cleanUp() {
   for (int i = 0; i < bodies.size(); i++) {
