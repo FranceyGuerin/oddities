@@ -12,6 +12,7 @@ void draw() {
 
   for (int i = 0; i < boids.size(); i++) {
     Boid b = boids.get(i);
+    b.update();
     b.display();
   }
 }
